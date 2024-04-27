@@ -1,12 +1,15 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
-
 const mainRoute = require("./routes/main");
+
 const cors = require("./middlewares/cors");
+const connectToDatabase = require("./database/connect");
 
 const PORT = 3000;
 const app = express();
+
+connectToDatabase();
 
 app.use(
     cors,
