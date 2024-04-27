@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { modelNames } = require("../database/config");
 
 const gameSchema = mongoose.Schema({
     title: {
@@ -23,4 +24,4 @@ const gameSchema = mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model("games", gameSchema);
+module.exports = mongoose.model(modelNames.games, gameSchema);

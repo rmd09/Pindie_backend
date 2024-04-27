@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { modelNames } = require("../database/config");
 
 const categorySchema = new mongoose.Schema({
   name: {
@@ -7,4 +8,4 @@ const categorySchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('category', categorySchema);
+module.exports = mongoose.model(modelNames.caterogy, categorySchema);
