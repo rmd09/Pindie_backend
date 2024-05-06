@@ -19,7 +19,7 @@ app.use(
     mainRouter,
     gamesRouter,
     categoriesRouter,
-    usersRouter,
+    usersRouter
 );
 
 app.listen(PORT, () => {
