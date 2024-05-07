@@ -8,6 +8,11 @@ function sendUserById(req, res) {
     res.send(JSON.stringify(req.user));
 }
 
+function sendUserUpdated(req, res) {
+    res.header("Content-Type", "application/json");
+    res.status(200).send(JSON.stringify({ message: "Пользователь обновлён" }));
+}
+
 const sendUserCreated = (req, res) => {
     res.setHeader("Content-Type", "application/json");
     res.end(JSON.stringify(req.user));
@@ -16,5 +21,6 @@ const sendUserCreated = (req, res) => {
 module.exports = { 
     sendAllUsers, 
     sendUserCreated,
-    sendUserById
+    sendUserById,
+    sendUserUpdated
 };

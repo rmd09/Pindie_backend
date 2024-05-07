@@ -15,8 +15,17 @@ const findGameById = async (req, res, next) => {
     }
 };
 
+const updateGame = async (req, res, next) => {
+    try {
+      req.game = await gameModel.findByIdAndUpdate(req.params.id, req.body);
+      next();
+    } catch (error) {
+      res.setHeader("Content-Type", "application/json");
+      res.status(400).send(JSON.stringify({ message: "Ошибка обновления игры" }));
+    }
+}; 
+
 const createGame = async (req, res, next) => {
-    console.log("POST /games");
     try {
         console.log(req.body);
         req.game = await gameModel.create(req.body);
@@ -30,5 +39,6 @@ const createGame = async (req, res, next) => {
 module.exports = {
     findAllGames,
     findGameById,
-    createGame
+    createGame,
+    updateGame
 }

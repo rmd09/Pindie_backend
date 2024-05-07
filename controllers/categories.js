@@ -8,6 +8,11 @@ function sendCategoryById(req, res) {
     res.send(JSOM.stringify(req.game));
 }
 
+function sendCategoryUpdated(req, res) {
+    res.header("Content-Type", "application/json");
+    res.status(200).send({ message: "Категория обновлена" });
+}
+
 const sendCategoryCreated = (req, res) => {
     res.setHeader("Content-Type", "application/json");
     res.end(JSON.stringify(req.category));
@@ -16,5 +21,6 @@ const sendCategoryCreated = (req, res) => {
 module.exports = { 
     sendAllCategories,
     sendCategoryCreated,
-    sendCategoryById
+    sendCategoryById,
+    sendCategoryUpdated
 };

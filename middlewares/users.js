@@ -16,6 +16,16 @@ const findUserById = async (req, res, next) => {
     }
 }; 
 
+async function updateUser(req, res, next) {
+  try {
+    req.game = await userModel.findByIdAndUpdate(req.params.id, req.body);
+    next();
+  } catch (error) {
+    res.header("Content-Type", "application/json");
+    res.status(400).send({ message: "Ошибка в обновлении пользователя" });
+  }
+}
+
 const createUser = async (req, res, next) => {
     console.log("POST /users");
     try {
@@ -31,5 +41,6 @@ const createUser = async (req, res, next) => {
 module.exports = {
     findAllUsers,
     findUserById,
-    createUser
+    createUser,
+    updateUser
 };
