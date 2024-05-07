@@ -1,14 +1,17 @@
 const cors = require("./cors");
-const { findAllCategories, createCategory} = require("./categories");
-const { findAllUsers, createUser} = require("./users");
-const { findAllGames, createGame } = require("./games");
+const { findAllCategories, createCategory, findCategoryById } = require("./categories");
+const { findAllUsers, createUser, findUserById } = require("./users");
+const { findAllGames, createGame, findGameById } = require("./games");
 
 module.exports = {
     cors,
     findAllCategories,
     createCategory,
+    findCategoryById,
     findAllUsers,
     createUser,
+    findUserById,
     findAllGames,
-    createGame
+    createGame,
+    findGameById
 }

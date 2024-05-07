@@ -3,6 +3,11 @@ function sendAllCategories(req, res) {
     res.send(JSON.stringify(req.categoriesArray));
 }
 
+function sendCategoryById(req, res) {
+    res.header("Content-Type", "application/json");
+    res.send(JSOM.stringify(req.game));
+}
+
 const sendCategoryCreated = (req, res) => {
     res.setHeader("Content-Type", "application/json");
     res.end(JSON.stringify(req.category));
@@ -10,5 +15,6 @@ const sendCategoryCreated = (req, res) => {
 
 module.exports = { 
     sendAllCategories,
-    sendCategoryCreated
+    sendCategoryCreated,
+    sendCategoryById
 };
