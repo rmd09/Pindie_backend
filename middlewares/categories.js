@@ -38,9 +38,20 @@ const createCategory = async (req, res, next) => {
     }
 }; 
 
+const deleteCategory = async (req, res, next) => {
+  try {
+    req.game = await categoryModel.findByIdAndDelete(req.params.id);
+    next();
+  } catch (error) {
+    res.header("Content-Type", "application/json");
+    res.status(400).send({ message: "Ошибка удаления категории" });
+  }
+}
+
 module.exports = {
     findAllCategories,
     findCategoryById,
     createCategory,
-    updateCategory
+    updateCategory,
+    deleteCategory
 }

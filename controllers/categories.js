@@ -18,9 +18,15 @@ const sendCategoryCreated = (req, res) => {
     res.end(JSON.stringify(req.category));
 };
 
+const sendCategoryDeleted = (req, res) => {
+    res.setHeader("Content-Type", "application/json");
+    res.status(200).send({ message: "Категория удалена" });
+}
+
 module.exports = { 
     sendAllCategories,
     sendCategoryCreated,
     sendCategoryById,
-    sendCategoryUpdated
+    sendCategoryUpdated,
+    sendCategoryDeleted
 };

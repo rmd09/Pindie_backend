@@ -36,9 +36,20 @@ const createGame = async (req, res, next) => {
     }
 };
 
+const deleteGame = async (req, res, next) => {
+    try {
+      req.game = await gameModel.findByIdAndDelete(req.params.id);
+      next();
+    } catch (error) {
+      res.setHeader("Content-Type", "application/json");
+      res.status(400).send(JSON.stringify({ message: "Ошибка удаления игры" }));
+    }
+}; 
+
 module.exports = {
     findAllGames,
     findGameById,
     createGame,
-    updateGame
+    updateGame,
+    deleteGame
 }

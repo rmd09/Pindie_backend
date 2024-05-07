@@ -1,7 +1,7 @@
 const cors = require("./cors");
-const { findAllCategories, createCategory, findCategoryById, updateCategory } = require("./categories");
-const { findAllUsers, createUser, findUserById, updateUser } = require("./users");
-const { findAllGames, createGame, findGameById, updateGame } = require("./games");
+const { findAllCategories, createCategory, findCategoryById, updateCategory, deleteCategory } = require("./categories");
+const { findAllUsers, createUser, findUserById, updateUser, deleteUser } = require("./users");
+const { findAllGames, createGame, findGameById, updateGame, deleteGame } = require("./games");
 
 module.exports = {
     cors,
@@ -16,5 +16,8 @@ module.exports = {
     findGameById,
     updateGame,
     updateCategory,
-    updateUser
+    updateUser,
+    deleteGame,
+    deleteUser,
+    deleteCategory
 }

@@ -38,9 +38,20 @@ const createUser = async (req, res, next) => {
     }
 }; 
 
+const deleteUser = async (req, res, next) => {
+  try {
+    req.game = await userModel.findByIdAndDelete(req.params.id);
+    next();
+  } catch (error) {
+    res.header("Content-Type", "application/json");
+    res.status(400).send({ message: "Ошибка удаления пользователя"} );
+  }
+}
+
 module.exports = {
     findAllUsers,
     findUserById,
     createUser,
-    updateUser
+    updateUser,
+    deleteUser
 };
