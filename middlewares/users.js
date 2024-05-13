@@ -48,10 +48,40 @@ const deleteUser = async (req, res, next) => {
   }
 }
 
+function checkEmptyNameAndEmailAndPassword(req, res, next) {
+  if (req.body.username == "" || req.body.email == "" || req.body.password == "") {
+    res.header("Content-Type", "application/json");
+    res.status(400).send({ message: "Заполните все поля!" });
+  } else {
+    next();
+  }
+}
+
+function checkEmptyNameAndEmail(req, res, next) {
+  if (req.body.username == "" || req.body.email == "") {
+    res.header("Content-Type", "application/json");
+    res.status(400).send({ message: "Заполните все поля!" });
+  } else {
+    next();
+  }
+}
+
+function checkIsUserExists(req, res, next) {
+  if (req.usersArray.find(item => { item.username == req.body.username})) {
+    res.header("Content-Type", "application/json");
+    res.status(400).send({ message: "Такой пользователь уже существует" });
+  } else {
+    next();
+  }
+  }
+
 module.exports = {
     findAllUsers,
     findUserById,
     createUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    checkEmptyNameAndEmailAndPassword,
+    checkEmptyNameAndEmail,
+    checkIsUserExists
 };

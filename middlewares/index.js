@@ -1,7 +1,7 @@
 const cors = require("./cors");
-const { findAllCategories, createCategory, findCategoryById, updateCategory, deleteCategory } = require("./categories");
-const { findAllUsers, createUser, findUserById, updateUser, deleteUser } = require("./users");
-const { findAllGames, createGame, findGameById, updateGame, deleteGame } = require("./games");
+const { findAllCategories, createCategory, findCategoryById, updateCategory, deleteCategory, checkIsCategoryExists, checkEmptyName } = require("./categories");
+const { findAllUsers, createUser, findUserById, updateUser, deleteUser, checkEmptyNameAndEmailAndPassword, checkEmptyNameAndEmail, checkIsUserExists } = require("./users");
+const { findAllGames, createGame, findGameById, updateGame, deleteGame, checkEmptyFields, checkIfUsersAreSafe, checkIfCategoriesAvaliable, checkIsGameExists } = require("./games");
 
 module.exports = {
     cors,
@@ -19,5 +19,14 @@ module.exports = {
     updateUser,
     deleteGame,
     deleteUser,
-    deleteCategory
+    deleteCategory,
+    checkEmptyFields,
+    checkIfUsersAreSafe,
+    checkIfCategoriesAvaliable,
+    checkIsCategoryExists,
+    checkIsGameExists,
+    checkEmptyName,
+    checkEmptyNameAndEmailAndPassword,
+    checkEmptyNameAndEmail,
+    checkIsUserExists
 }
