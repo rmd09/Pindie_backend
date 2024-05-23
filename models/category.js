@@ -7,5 +7,5 @@ const categorySchema = new mongoose.Schema({
   },
 });
 
-const categories = mongoose.model("categories", categorySchema);
+const categories = mongoose.model("category", categorySchema);
 module.exports = categories;

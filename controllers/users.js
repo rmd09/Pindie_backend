@@ -15,7 +15,8 @@ function sendUserUpdated(req, res) {
 
 const sendUserCreated = (req, res) => {
     res.setHeader("Content-Type", "application/json");
-    res.end(JSON.stringify(req.user));
+    const { password,  ...userWithoutPassword} = req.user.toObject();
+    res.end(JSON.stringify(userWithoutPassword));
 };
 
 const sendUserDeleted = (req, res) => {
@@ -23,10 +24,16 @@ const sendUserDeleted = (req, res) => {
     res.status(200).send({ message: "Пользователь успешно удалён" });
 }
 
+const sendMe = (req, res) => {
+    res.setHeader("Content-Type", "application/json");
+    res.end(JSON.stringify(req.user));
+  }; 
+
 module.exports = { 
     sendAllUsers, 
     sendUserCreated,
     sendUserById,
     sendUserUpdated,
-    sendUserDeleted
+    sendUserDeleted,
+    sendMe
 };
